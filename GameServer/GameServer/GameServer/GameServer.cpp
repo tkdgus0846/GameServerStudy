@@ -14,34 +14,54 @@ class Player
 {
 public:
 	Player() {}
-	~Player() {}
+	virtual ~Player() {}
 };
 
 class Knight : public Player
 {
 public:
-	Knight() : _hp(0) {}
-	Knight(int32 hp) : _hp(hp) {}
-
-	/*static void* operator new(size_t size)
+	Knight()
 	{
-		void* ptr = ::malloc(size);
-		return ptr;
+		cout << "Knight()" << endl;
 	}
-	static void operator delete(void* obj)
-	{
-		::free(obj);
-	}*/
 
-	int32 _hp;
+	Knight(int32 hp) : _hp(hp)
+	{
+		cout << "Knight(hp)" << endl;
+	}
+
+	~Knight()
+	{
+		cout << "~Knight()" << endl;
+	}
+
+	int32 _hp = 100;
+	int32 _mp = 10;
 };
 
 int main()
-{	
-	Vector<int> v;
-	v.push_back(1);
-	v.push_back(2);
-	v.push_back(3);
+{
+	int64* i = static_cast<int64*>(Xalloc(8));
+	Xrelease(i);
+	int64* i2 = static_cast<int64*>(Xalloc(8));
+	int64* i3 = static_cast<int64*>(Xalloc(8));
 
 
+	/*for (int32 i = 0; i < 5; i++)
+	{
+		GThreadManager->Launch([]()
+			{
+				while (true)
+				{
+					Vector<Knight> v(10);
+
+					Map<int32, Knight> m;
+					m[100] = Knight();
+
+					this_thread::sleep_for(10ms);
+				}
+			});
+	}
+
+	GThreadManager->Join();*/
 }

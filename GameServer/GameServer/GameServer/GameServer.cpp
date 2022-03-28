@@ -9,59 +9,100 @@
 
 #include "RefCounting.h"
 #include "Memory.h"
+#include "Allocator.h"
+
+using TL = TypeList<class Player, class Mage, class Knight, class Archer>;
 
 class Player
 {
 public:
-	Player() {}
-	virtual ~Player() {}
+	Player()
+	{
+		INIT_TL(Player);
+	}
+	virtual ~Player() { }
+
+	DECLARE_TL
 };
 
 class Knight : public Player
 {
 public:
-	Knight()
-	{
-		cout << "Knight()" << endl;
-	}
+	Knight() { INIT_TL(Knight); }
+};
 
-	Knight(int32 hp) : _hp(hp)
-	{
-		cout << "Knight(hp)" << endl;
-	}
+class Mage : public Player
+{
 
-	~Knight()
-	{
-		cout << "~Knight()" << endl;
-	}
+public:
+	Mage() { INIT_TL(Mage); }
+};
 
-	int32 _hp = 100;
-	int32 _mp = 10;
+class Archer : public Player
+{
+
+public:
+	Archer() { INIT_TL(Archer) }
+};
+
+class Dog
+{
+
 };
 
 int main()
 {
-	int64* i = static_cast<int64*>(Xalloc(8));
-	Xrelease(i);
-	int64* i2 = static_cast<int64*>(Xalloc(8));
-	int64* i3 = static_cast<int64*>(Xalloc(8));
+	//TypeList<Mage, Knight>::Head whoAMI;
+	//TypeList<Mage, Knight>::Tail whoAMI2;
 
+	//TypeList<Mage, TypeList<Knight, Archer>>::Head whoAMI3;
+	//TypeList<Mage, TypeList<Knight, Archer>>::Tail::Head whoAMI4;
+	//TypeList<Mage, TypeList<Knight, Archer>>::Tail::Tail whoAMI5;
 
-	/*for (int32 i = 0; i < 5; i++)
+	//int32 len1 = Length<TypeList<Mage, Knight>>::value;
+	//int32 len2 = Length<TypeList<Mage, Knight, Archer>>::value;
+	//
+	//
+	//// 3*3 
+	//TypeAt<TL, 0>::Result whoAMI6;
+	//TypeAt<TL, 1>::Result whoAMI7;
+	//TypeAt<TL, 2>::Result whoAMI8;
+
+	//int32 index1 = IndexOf<TL, Mage>::value;
+	//int32 index2 = IndexOf<TL, Archer>::value;
+	//int32 index3 = IndexOf<TL, Dog>::value;
+
+	//bool canConvert1 = Conversion<Player, Knight>::exists;
+	//bool canConvert2 = Conversion<Knight, Player>::exists;
+	//bool canConvert3 = Conversion<Knight, Dog>::exists;
+
+	/*{
+		Player* player = new Knight();
+
+		bool canCast = CanCast<Knight*>(player);
+		Knight* knight = TypeCast<Knight*>(player);
+		
+
+		delete player;
+	}*/
+
+	{
+		shared_ptr<Player> player = MakeShared<Knight>();
+
+		shared_ptr<Archer> archer = TypeCast<Archer>(player);
+		bool canCast = CanCast<Mage>(player);
+
+	}
+	
+	for (int32 i = 0; i < 5; i++)
 	{
 		GThreadManager->Launch([]()
 			{
 				while (true)
 				{
-					Vector<Knight> v(10);
-
-					Map<int32, Knight> m;
-					m[100] = Knight();
-
-					this_thread::sleep_for(10ms);
 				}
 			});
 	}
-
-	GThreadManager->Join();*/
+	printf("sdifsdf");
+	GThreadManager->Join();
 }

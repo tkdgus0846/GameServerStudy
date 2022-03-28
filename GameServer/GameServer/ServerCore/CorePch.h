@@ -5,8 +5,12 @@
 #include "CoreTLS.h"
 #include "CoreGlobal.h"
 #include "Container.h"
-#include "Lock.h"
 
 #include <windows.h>
 #include <iostream>
 using namespace std;
+
+#include "Lock.h"
+
+#include "ObjectPool.h"
+#include "TypeCast.h"

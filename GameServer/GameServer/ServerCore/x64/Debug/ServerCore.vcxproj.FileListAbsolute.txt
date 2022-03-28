@@ -2,3 +2,5 @@ C:\Users\tkdgu\Downloads\Reference Counting_소스코드\Libraries\Debug\ServerC
 C:\Users\tkdgu\Downloads\Reference Counting_소스코드\ServerCore\x64\Debug\ServerCore.pdb
 C:\Users\tkdgu\Desktop\서버공부\Libraries\Debug\ServerCore.pdb
 C:\Users\tkdgu\Desktop\서버공부\ServerCore\x64\Debug\ServerCore.pdb
+C:\Users\tkdgu\Documents\GitHub\GameServerStudy\GameServer\GameServer\Libraries\Debug\ServerCore.pdb
+C:\Users\tkdgu\Documents\GitHub\GameServerStudy\GameServer\GameServer\ServerCore\x64\Debug\ServerCore.pdb

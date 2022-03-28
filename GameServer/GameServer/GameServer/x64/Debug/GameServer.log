@@ -1,2 +1,3 @@
-﻿  GameServer.cpp
-  GameServer.vcxproj -> C:\Users\User\OneDrive\문서\GitHub\GameServerStudy\GameServer\GameServer\Binary\Debug\GameServer.exe
+﻿  pch.cpp
+  GameServer.cpp
+  GameServer.vcxproj -> C:\Users\tkdgu\Documents\GitHub\GameServerStudy\GameServer\GameServer\Binary\Debug\GameServer.exe
